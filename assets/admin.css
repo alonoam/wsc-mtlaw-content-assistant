@@ -1,0 +1,48 @@
+/* MT Content Assistant: admin screen */
+.mtca-layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;align-items:start;margin-top:12px}
+.mtca-card{background:#fff;border:1px solid #c3c4c7;border-radius:6px;padding:16px 18px;margin-bottom:20px}
+.mtca-card h2{margin:0 0 12px;font-size:16px}
+.mtca-card h3{margin:18px 0 8px;font-size:14px}
+.mtca-card label{display:block;font-weight:600;margin:12px 0 4px}
+.mtca-card input[type=text],.mtca-card input[type=url],.mtca-card select,.mtca-card textarea{width:100%;max-width:none;box-sizing:border-box}
+.mtca-card form .button,.mtca-card > .button{margin-top:14px}
+.mtca-jobs{margin:0;padding:0;list-style:none}
+.mtca-job{border-bottom:1px solid #f0f0f1;padding:8px 0}
+.mtca-job__open{display:block;width:100%;text-align:right;background:none;border:0;padding:4px 6px;cursor:pointer;border-radius:4px}
+.mtca-job__open:hover,.mtca-job__open:focus-visible{background:#f0f6fc}
+.mtca-job.is-open .mtca-job__open{background:#f0f6fc}
+.mtca-job__title{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mtca-job__meta{display:block;color:#646970;font-size:12px}
+.mtca-job.is-failed .mtca-job__meta,.mtca-job__err{color:#b32d2e}
+.mtca-job__err{display:block;font-size:12px;padding:0 6px}
+.mtca-job.is-processing .mtca-job__meta:after{content:" ...";}
+.mtca-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mtca-head h2{margin:0;flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+.mtca-badge{font-size:12px;padding:3px 9px;border-radius:999px;background:#f0f0f1}
+.mtca-badge.is-ready{background:#edfaef;color:#005c12}
+.mtca-badge.is-failed{background:#fcf0f1;color:#8a2424}
+.mtca-del{color:#b32d2e}
+.mtca-warns{margin-top:10px}
+.mtca-warn{margin:6px 0;padding:8px 12px;border-right:4px solid #72aee6;background:#f0f6fc}
+.mtca-warn.is-warn{border-color:#dba617;background:#fcf9e8}
+.mtca-warn.is-block{border-color:#d63638;background:#fcf0f1;font-weight:600}
+.mtca-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.mtca-field{position:relative}
+.mtca-count{display:block;font-size:11px;color:#646970;text-align:left}
+.mtca-count.is-over{color:#b32d2e;font-weight:600}
+.mtca-facts td{vertical-align:top}
+.mtca-noquote{color:#b32d2e}
+.mtca-images{display:flex;flex-wrap:wrap;gap:8px}
+.mtca-img{padding:0;border:3px solid transparent;border-radius:4px;background:none;cursor:pointer;line-height:0}
+.mtca-img img{width:110px;height:74px;object-fit:cover;border-radius:2px}
+.mtca-img.is-picked{border-color:#2271b1}
+.mtca-chat__log{max-height:320px;overflow:auto;border:1px solid #dcdcde;border-radius:4px;padding:8px;background:#f6f7f7;margin-bottom:8px;min-height:40px}
+.mtca-msg{margin:6px 0;padding:8px 10px;border-radius:6px;background:#fff;border:1px solid #dcdcde;max-width:92%}
+.mtca-msg.is-user{background:#e7f1fb;margin-right:auto;margin-left:0}
+.mtca-msg p{margin:0;white-space:pre-wrap}
+.mtca-msg__changed{display:block;margin-top:4px;font-size:11px;color:#005c12}
+.mtca-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid #f0f0f1}
+.mtca-ack{flex:1 1 100%;font-weight:600}
+.mtca-toast{position:fixed;bottom:24px;left:24px;z-index:99999;background:#1d2327;color:#fff;padding:10px 16px;border-radius:4px;max-width:420px}
+.mtca-toast.is-bad{background:#8a2424}
+@media (max-width:1100px){.mtca-layout,.mtca-cols{grid-template-columns:minmax(0,1fr)}}
