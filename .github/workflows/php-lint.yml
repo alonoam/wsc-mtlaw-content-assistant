@@ -1,0 +1,39 @@
+name: PHP lint
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+      - name: Syntax check
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            php -l "$f" > /dev/null || fail=1
+          done < <(find . -name '*.php' -not -path './vendor/*' -print0)
+          exit $fail
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No secrets in the code
+        run: |
+          fail=0
+          # the '...' placeholder used in comments and notices is not a secret
+          if grep -rnE "define\(\s*['\"]MTCA_CLAUDE_API_KEY['\"]\s*,\s*['\"][^'\"]+['\"]" --exclude-dir=.git --exclude-dir=.github . | grep -vE ",\s*['\"]\.\.\.['\"]" ; then
+            echo "The API key constant is defined in the plugin. It belongs in wp-config.php."; fail=1
+          fi
+          # a real Claude API key anywhere in the repository
+          if grep -rnE "sk-ant-[A-Za-z0-9_-]{20,}" --exclude-dir=.git . ; then
+            echo "A Claude API key is committed. Revoke it and remove it from the code."; fail=1
+          fi
+          exit $fail
